@@ -3,6 +3,8 @@ import { getAllPostParams, getPostByYearAndSlug } from "@/lib/blog";
 import { notFound } from "next/navigation";
 import { Header } from "./header";
 
+export const revalidate = 60;
+
 type Props = {
   params: Promise<{ year: string; slug: string }>;
 };

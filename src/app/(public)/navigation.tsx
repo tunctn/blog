@@ -24,7 +24,10 @@ export const Navigation = () => {
   return (
     <nav className="my-4 flex items-center gap-4 border-t border-b">
       {NAVIGATION.map((item) => {
-        const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+        let isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+        if (pathname.startsWith("/blog") && item.href === "/") {
+          isActive = true;
+        }
         return (
           <Link
             key={item.href}

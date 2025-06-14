@@ -1,8 +1,8 @@
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { siteConfig } from "@/lib/config";
 import Link from "next/link";
+import { Pronounciation } from "./pronounciation";
 
 export const Header = () => {
   return (
@@ -34,15 +34,11 @@ export const Header = () => {
 
 const Name = () => {
   return (
-    <Tooltip>
-      <TooltipTrigger>
-        <Link href="/">
-          <h1 className="font-bold text-lg">Tunç Türkmen</h1>
-        </Link>
-      </TooltipTrigger>
-      <TooltipContent align="start">
-        <p>Pronounced: Toonch Turk-men </p>
-      </TooltipContent>
-    </Tooltip>
+    <div className="group flex items-center gap-2">
+      <Link href="/">
+        <h1 className="font-bold text-lg">Tunç Türkmen</h1>
+      </Link>
+      <Pronounciation />
+    </div>
   );
 };

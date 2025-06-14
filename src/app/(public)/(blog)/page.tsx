@@ -2,6 +2,8 @@ import { type Post, getAllPosts, getYearFromDate, isNewPost } from "@/lib/blog";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
+export const revalidate = 60;
+
 export default async function BlogPage() {
   const posts = await getAllPosts();
 
@@ -21,7 +23,7 @@ const BlogPostItem = ({ post }: { post: Post }) => {
   const isNew = isNewPost(post.meta.date);
 
   return (
-    <Link href={`/${year}/${post.meta.slug}`}>
+    <Link href={`/blog/${year}/${post.meta.slug}`}>
       <div className="group sm:-ml-4 relative mb-3 flex h-max flex-col items-start rounded-md py-3 transition-colors duration-200 sm:w-[calc(100%+16px)] md:px-4 md:hover:bg-muted">
         <div className="flex w-full items-center justify-between">
           <div className={cn("flex items-center gap-1", isNew && "mb-1")}>

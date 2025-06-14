@@ -1,0 +1,56 @@
+{
+  "code-runner.ignoreSelection": true,
+  "workbench.colorCustomizations": {
+		"activityBar.activeBackground": "#7841da",
+		"activityBar.background": "#7841da",
+		"activityBar.foreground": "#e7e7e7",
+		"activityBar.inactiveForeground": "#e7e7e799",
+		"activityBarBadge.background": "#502710",
+		"activityBarBadge.foreground": "#e7e7e7",
+		"commandCenter.border": "#e7e7e799",
+		"sash.hoverBorder": "#7841da",
+		"statusBar.background": "#5e26c2",
+		"statusBar.foreground": "#e7e7e7",
+		"statusBarItem.hoverBackground": "#7841da",
+		"statusBarItem.remoteBackground": "#5e26c2",
+		"statusBarItem.remoteForeground": "#e7e7e7",
+		"titleBar.activeBackground": "#5e26c2",
+		"titleBar.activeForeground": "#e7e7e7",
+		"titleBar.inactiveBackground": "#5e26c299",
+		"titleBar.inactiveForeground": "#e7e7e799"
+	},
+  "peacock.color": "#5e26c2",
+  "editor.defaultFormatter": "biomejs.biome",
+  "[javascript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "files.associations": {
+    "*.scss": "scss",
+    "*.css": "css",
+    "*.pcss": "css",
+    "*.postcss": "css",
+    ".env.*": "properties",
+    ".npmcheckrc": "json"
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit",
+    "source.removeUnusedImports": "explicit",
+    "source.fixAll.biome": "explicit"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    "tw`([^`]*)" // tw`...`
+  ],
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.documentSelectors": ["**/*.css"],
+  "i18n-ally.localesPaths": ["./packages/i18n/dict"], // Paths are relative to ROOT dir, not .vscode dir
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.editor.preferEditor": true,
+  "i18n-ally.enabledFrameworks": ["next-intl"],
+  "i18n-ally.translate.engines": ["deepl", "google"],
+  "i18n-ally.sourceLanguage": "en"
+}

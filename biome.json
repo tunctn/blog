@@ -1,0 +1,68 @@
+{
+  "$schema": "https://biomejs.dev/schemas/latest/schema.json",
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": true,
+    "attributePosition": "auto",
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 140,
+    "lineEnding": "lf"
+  },
+  "linter": {
+    "rules": {
+      "a11y": {
+        "useSemanticElements": "off",
+        "noSvgWithoutTitle": "off"
+      },
+      "style": {
+        "noUnusedTemplateLiteral": "off",
+        "noNonNullAssertion": "off"
+      },
+      "complexity": {
+        "useLiteralKeys": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "info",
+        "noUnusedVariables": "warn"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "level": "info",
+          "fix": "safe",
+          "options": {
+            "attributes": ["className", "class"],
+            "functions": ["cn", "tw"]
+          }
+        }
+      }
+    }
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "files": {
+    "ignore": [
+      ".react-email/**",
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/coverage/**",
+      "**/out/**",
+      "build",
+      "coverage",
+      "node_modules",
+      ".next",
+      "dist",
+      "out",
+      ".turbo",
+      "**/meta/*.json",
+      "**/logs/*",
+      "**/*.css",
+      "apps/docs/.source/index.ts",
+      "apps/docs/public/openapi.json",
+      "apps/web/dict/en.d.json.ts"
+    ],
+    "include": ["**/*.ts", "**/*.json", "**/*.tsx", ".vscode/**", ".npmcheckrc"]
+  }
+}

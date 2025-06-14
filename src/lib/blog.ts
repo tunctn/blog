@@ -68,11 +68,6 @@ export function getYearFromDate(date: string): string {
   return new Date(date).getFullYear().toString();
 }
 
-export function getPostsByYear(year: string): Post[] {
-  const allPosts = getAllPosts();
-  return allPosts.filter((post) => getYearFromDate(post.meta.date) === year);
-}
-
 export function getPostByYearAndSlug(year: string, slug: string): Post | null {
   const post = getPostBySlug(slug);
   if (!post) {
@@ -81,27 +76,6 @@ export function getPostByYearAndSlug(year: string, slug: string): Post | null {
 
   const postYear = getYearFromDate(post.meta.date);
   return postYear === year ? post : null;
-}
-
-export function getPostsByYearGrouped(): PostsByYear {
-  const allPosts = getAllPosts();
-  const postsByYear: PostsByYear = {};
-
-  for (const post of allPosts) {
-    const year = getYearFromDate(post.meta.date);
-    if (!postsByYear[year]) {
-      postsByYear[year] = [];
-    }
-    postsByYear[year].push(post);
-  }
-
-  return postsByYear;
-}
-
-export function getAvailableYears(): string[] {
-  const allPosts = getAllPosts();
-  const years = new Set(allPosts.map((post) => getYearFromDate(post.meta.date)));
-  return Array.from(years).sort((a, b) => Number.parseInt(b) - Number.parseInt(a)); // Most recent first
 }
 
 // Optimized function for generateStaticParams to avoid multiple getAllPosts() calls

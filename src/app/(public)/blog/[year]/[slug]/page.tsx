@@ -1,6 +1,6 @@
 import { Section } from "@/app/(public)/section";
 import { InteractiveDemo } from "@/components/interactive-demo";
-import { getAllPostParams, getPostByYearAndSlug } from "@/lib/mdx";
+import { getAllPostParams, getPostByYearAndSlug } from "@/lib/blog";
 import { ArrowLeft } from "lucide-react";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from "next/link";
@@ -32,7 +32,6 @@ export async function generateMetadata({ params }: Props) {
 
 const components = {
   InteractiveDemo,
-  // Add more custom components here as needed
 };
 
 export default async function BlogPost({ params }: Props) {

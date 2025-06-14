@@ -57,7 +57,8 @@
       ".turbo",
       "**/meta/*.json",
       "**/logs/*",
-      "**/*.css"
+      "**/*.css",
+      "**/*.mdx"
     ],
     "include": ["**/*.ts", "**/*.json", "**/*.tsx", ".vscode/**", ".npmcheckrc", "site.webmanifest"]
   }

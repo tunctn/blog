@@ -1,8 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
 
-const postsDirectory = path.join(process.cwd(), "content/posts");
+const postsDirectory = path.join(process.cwd(), "src/content/posts");
 
 export type PostMeta = {
   title: string;
@@ -14,7 +13,7 @@ export type PostMeta = {
 
 export type Post = {
   meta: PostMeta;
-  content: string;
+  Component: React.ComponentType;
 };
 
 export type PostsByYear = {
@@ -36,30 +35,28 @@ export function getPostSlugs(): string[] {
     .map((file) => file.replace(/\.mdx$/, ""));
 }
 
-export function getPostBySlug(slug: string): Post | null {
+export async function getPostBySlug(slug: string): Promise<Post | null> {
   try {
-    const fullPath = path.join(postsDirectory, `${slug}.mdx`);
-    const fileContents = fs.readFileSync(fullPath, "utf8");
-    const { data, content } = matter(fileContents);
+    const { meta, default: Component } = await import(`@/content/posts/${slug}.mdx`);
 
     return {
       meta: {
-        ...data,
+        ...meta,
         slug,
-      } as PostMeta,
-      content,
+      },
+      Component,
     };
   } catch (_error) {
     return null;
   }
 }
 
-export function getAllPosts(): Post[] {
+export async function getAllPosts(): Promise<Post[]> {
   const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
+  const postsPromises = slugs.map(getPostBySlug);
+  const posts = (await Promise.all(postsPromises))
     .filter((post): post is Post => post !== null)
-    .sort((post1, post2) => (post1.meta.date > post2.meta.date ? -1 : 1));
+    .sort((post1, post2) => new Date(post2.meta.date).getTime() - new Date(post1.meta.date).getTime());
 
   return posts;
 }
@@ -68,8 +65,12 @@ export function getYearFromDate(date: string): string {
   return new Date(date).getFullYear().toString();
 }
 
-export function getPostByYearAndSlug(year: string, slug: string): Post | null {
-  const post = getPostBySlug(slug);
+export function isNewPost(date: string): boolean {
+  return new Date(date).getTime() > new Date().getTime() - 1000 * 60 * 60 * 24 * 30; // 30 days
+}
+
+export async function getPostByYearAndSlug(year: string, slug: string): Promise<Post | null> {
+  const post = await getPostBySlug(slug);
   if (!post) {
     return null;
   }
@@ -79,8 +80,8 @@ export function getPostByYearAndSlug(year: string, slug: string): Post | null {
 }
 
 // Optimized function for generateStaticParams to avoid multiple getAllPosts() calls
-export function getAllPostParams(): PostParams[] {
-  const allPosts = getAllPosts();
+export async function getAllPostParams(): Promise<PostParams[]> {
+  const allPosts = await getAllPosts();
   return allPosts.map((post) => ({
     year: getYearFromDate(post.meta.date),
     slug: post.meta.slug,

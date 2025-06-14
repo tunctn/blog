@@ -22,14 +22,14 @@ const NAVIGATION: NavigationItem[] = [
 export const Navigation = () => {
   const pathname = usePathname();
   return (
-    <nav className="flex items-center gap-4 border-b pt-10 ">
+    <nav className="mt-6 flex items-center gap-4 rounded-md bg-muted px-4">
       {NAVIGATION.map((item) => {
         const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
         return (
           <Link
             key={item.href}
             href={item.href}
-            className={cn("relative pb-2", {
+            className={cn("relative py-2", {
               "font-semibold": isActive,
             })}
           >

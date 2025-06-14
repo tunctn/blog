@@ -52,5 +52,8 @@
   "i18n-ally.editor.preferEditor": true,
   "i18n-ally.enabledFrameworks": ["next-intl"],
   "i18n-ally.translate.engines": ["deepl", "google"],
-  "i18n-ally.sourceLanguage": "en"
+  "i18n-ally.sourceLanguage": "en",
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

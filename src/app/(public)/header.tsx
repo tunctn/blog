@@ -1,3 +1,4 @@
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { siteConfig } from "@/lib/config";
 import { ThemeToggle } from "../../components/theme-toggle";
 import { Button } from "../../components/ui/button";
@@ -7,7 +8,7 @@ export const Header = () => {
     <header className="flex items-start justify-between">
       <div>
         <div>
-          <h1 className="font-bold text-lg">Tunç Türkmen</h1>
+          <Name />
           <h3 className="text-muted-foreground">Designer and Developer</h3>
         </div>
       </div>
@@ -27,5 +28,18 @@ export const Header = () => {
         <ThemeToggle />
       </nav>
     </header>
+  );
+};
+
+const Name = () => {
+  return (
+    <Tooltip>
+      <TooltipTrigger>
+        <h1 className="font-bold text-lg">Tunç Türkmen</h1>
+      </TooltipTrigger>
+      <TooltipContent align="start">
+        <p>Pronounced: Toonch Turk-men </p>
+      </TooltipContent>
+    </Tooltip>
   );
 };

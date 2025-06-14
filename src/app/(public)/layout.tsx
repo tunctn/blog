@@ -8,7 +8,7 @@ export default function PublicLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="container mx-auto max-w-2xl flex-col bg-card px-4">
+    <div className="container mx-auto max-w-2xl flex-col px-4">
       <div className="flex min-h-screen flex-col pt-8">
         <Header />
         <Navigation />

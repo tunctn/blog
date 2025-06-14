@@ -43,7 +43,6 @@
   },
   "files": {
     "ignore": [
-      ".react-email/**",
       "**/node_modules/**",
       "**/dist/**",
       "**/build/**",
@@ -58,11 +57,8 @@
       ".turbo",
       "**/meta/*.json",
       "**/logs/*",
-      "**/*.css",
-      "apps/docs/.source/index.ts",
-      "apps/docs/public/openapi.json",
-      "apps/web/dict/en.d.json.ts"
+      "**/*.css"
     ],
-    "include": ["**/*.ts", "**/*.json", "**/*.tsx", ".vscode/**", ".npmcheckrc"]
+    "include": ["**/*.ts", "**/*.json", "**/*.tsx", ".vscode/**", ".npmcheckrc", "site.webmanifest"]
   }
 }

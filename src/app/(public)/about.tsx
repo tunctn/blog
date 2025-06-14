@@ -8,7 +8,7 @@ export const About = () => {
     <Section>
       <Paragraph>
         I’m currently working as a software engineer at{" "}
-        <Button asChild variant="link" className="py-0! text-base">
+        <Button asChild variant="link" className="my-0! h-0! py-0! text-base">
           <a href="https://nyra.health" target="_blank" rel="noopener noreferrer">
             nyra health
           </a>
@@ -30,7 +30,7 @@ export const About = () => {
 
       <Paragraph>
         Send an email to{" "}
-        <Button asChild variant="link" className="py-0! text-base">
+        <Button asChild variant="link" className="my-0! h-0! py-0! text-base">
           <a href="mailto:t@tunc.co" target="_blank" rel="noopener noreferrer">
             <span>t@tunc.co</span>
           </a>

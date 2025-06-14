@@ -1,9 +1,9 @@
+import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
-import { Button } from "../../components/ui/button";
 
 export const Footer = () => {
   return (
-    <footer className="flex items-end justify-between pt-14 pb-8">
+    <footer className="mt-8 flex items-center justify-between border-t pt-4 pb-4">
       <div>
         <div>
           <span className="font-semibold text-muted-foreground text-sm">Tunç Türkmen</span>

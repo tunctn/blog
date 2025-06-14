@@ -1,3 +1,6 @@
+import { YouTube } from '@/components/mdx/youtube';
+import { ZoomableImage } from '@/components/mdx/zoomable-image';
+
 export const meta = {
   title: 'Liquid Glass',
   description:
@@ -18,7 +21,9 @@ By the time I'm writing this, I've been using Liquid Glass for a few days now on
 
 As we are all familiar with the Dynamic Island, it's a great way to add a bit of visual interest to the interface. New Liquid Glass has the same sort of shrinking and expanding animation effects, which I enjoy a lot.
 
-The navigation layer adapts and changes its shape and size based on the content it's covering at the moment. They shrink, reappear, change their color, and more. I really admire the effort Apple put into making the navigation layer feel more alive and engaging.
+The navigation layer adapts and changes its shape and size based on the content it's covering at the moment. They shrink, reappear, change their color, and more. I really admire the effort Apple put into making the navigation layer feel more alive and engaging. You can watch the video below to see the philosophy behind it. It's actually a great video.
+
+<YouTube videoId="IrGYUq1mklk" />
 
 Another thing I like is the feedback you get when you interact with the navigation layer. When you hold and drag the navigation layer, it actually bends and moves. It's a subtle effect, but it's a nice touch.
 
@@ -26,7 +31,9 @@ Another thing I like is the feedback you get when you interact with the navigati
 
 It's still a bit early to tell, we're on the very first developer beta and I'm sure it'll improve over time, however the readibility of the content inside of the Liquid Glass element is not as good as it was before. If you have a media-rich background under the Liquid Glass, then it actually feels like you are looking through a glass. And engineering behind this simply blows my mind.
 
-The bad thing however it's not consistent enough, at least not yet. When you have a bright background and try to read the notifications in your notification center, the text is not readable. Like not at all. I would consider myself as a person with good eyesight, and I have to squint my eyes to read the text, especially when I'm outside under the sun.
+The bad thing however it's not consistent enough, at least not yet. When you have a bright background and try to read the notifications in your notification center, the text is not readable. Like not at all. I would consider myself as a person with good eyesight, and I have to squint my eyes to read the text, especially when I'm outside under the sun. I mean, decide for yourself:
+
+![Notification Center in Liquid Glass](/blog/2025/liquid-glass/notification-center.jpg)
 
 Also I noticed that the Liquid Glass effect kind of distracting when you are reading the content, especially on my iPhone. As I scroll down the page, the Liquid Glass effect kind of moves with me, and constant adapting to the content takes a lot attention. We already live in a world where we are constantly distracted by our phones, notifications and content, and this simply adds to the noise. And it can get annoying, really, really fast.
 
@@ -36,11 +43,15 @@ This might be a bit controversial. I'm not against the innovations or new experi
 
 We tried to imitate the real world in the early days of the web (and mobile apps) because it was a new thing. We wanted to make it feel more natural, familiar and easy to understand. We literally copied the real world and made it digital. When you pressed a button, you actually felt like you are pressing a button. When you write something on the notebook in your phone, the UI was highly inspired by the real paper and notebook. And it was a success. People adapted to the digital world through using the UI that was inspired by the real world.
 
+![Skeuomorphic vs Flat Design](/blog/2025/liquid-glass/skeuomorphic-vs-flat.png)
+
 Now we are in a different stage of the digital world. We are not trying to make the digital world feel more natural, because now they are separate entities. The digital world is highly abstracted, we simplified the animations, effects, styling, and more, because we now have a lot of things going on on the screen. We multi-task all the time; there are several tabs open, we drag and drop between apps, and at the same time they all have their own UI. It's a lot of cognitive load for our little dumb human brains.
 
 This is why we simplified our UIs. We adapted the real world and created a digital one based on it. It worked great, it still works great. However Apple now wants to go back to the real world, and as much as I like the idea, the engineering and art style, I think it doesn't work.
 
 It took more than a decade for us to get to the point where we have a good UI that works for me, my mom, my grandma, almost even for my dog. We did a lot of experiments, research, A11Y testing, and more to get to the point where we have a good UI that works for <strong>everyone</strong>. And I'll give you a hint, it was not easy. Don't get me wrong, Apple contributed to this enhancement maybe more than any other company, but they look like they're throwing away all the achievements we made in the last decade.
+
+![A horrible moment for A11Y users](/blog/2025/liquid-glass/liquid-glass-a11y.jpeg)
 
 When you take a screenshot with the new Liquid Glass environment, it either looks like a piece of art with the right conditions, or a horrible mess that looks like a poor work done by my 10 year old self, that experiments with cracked Photoshop. I'm not saying that the new Liquid Glass environment is not beautiful, it is, but it's not consistent.
 

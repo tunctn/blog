@@ -1,7 +1,7 @@
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { siteConfig } from "@/lib/config";
-import { ThemeToggle } from "../../components/theme-toggle";
-import { Button } from "../../components/ui/button";
 
 export const Header = () => {
   return (

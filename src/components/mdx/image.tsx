@@ -1,67 +1,38 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
-import sizeOf from "image-size";
+import { cn } from "@/lib/utils";
+import { getImageSize } from "@/utils/image-size";
+import { parseAlt } from "@/utils/parse-alt";
 import NextImage from "next/image";
-import { Caption } from "./caption";
+import type { ImageProps as NextImageProps } from "next/image";
 
-export async function Image({
-  src,
-  alt: originalAlt,
-  width = null,
-  height = null,
-}: {
+export interface ImageProps extends NextImageProps {
   src: string;
-  alt?: string;
-  width: number | null;
-  height: number | null;
-}) {
+}
+
+export async function Image({ src, alt: originalAlt, className, ...props }: ImageProps) {
   const isDataImage = src.startsWith("data:");
   if (isDataImage) {
     /* eslint-disable @next/next/no-img-element */
     return <img src={src} alt={originalAlt ?? ""} />;
   }
-  if (width === null || height === null) {
-    let imageBuffer: Buffer | null = null;
 
-    if (src.startsWith("http")) {
-      const res = await fetch(src);
-      imageBuffer = Buffer.from(await res.arrayBuffer());
-    } else {
-      if (!process.env.CI && process.env.VERCEL_URL && process.env.NODE_ENV === "production") {
-        const res = await fetch(`https://${process.env.VERCEL_URL}${src}`);
-        imageBuffer = Buffer.from(await res.arrayBuffer());
-      } else {
-        imageBuffer = await readFile(new URL(join(import.meta.url, "..", "..", "..", "..", "public", src)).pathname);
-      }
-    }
-    const computedSize = sizeOf(imageBuffer);
-    if (computedSize.width === undefined || computedSize.height === undefined) {
-      throw new Error("Could not compute image size");
-    }
-    width = computedSize.width;
-    height = computedSize.height;
+  if (props.width === undefined || (props.height === undefined && props.fill === false)) {
+    const { width, height } = await getImageSize(src);
+    props.width = width;
+    props.height = height;
   }
 
-  let alt: string | null = null;
-  let dividedBy = 100;
-
-  if ("string" === typeof originalAlt) {
-    const match = originalAlt.match(/(.*) (\[(\d+)%\])?$/);
-    if (match != null) {
-      alt = match[1];
-      dividedBy = match[3] ? Number.parseInt(match[3]) : 100;
-    }
-  } else {
-    alt = originalAlt ?? null;
-  }
-
-  const factor = dividedBy / 100;
+  const { alt, factor } = parseAlt(originalAlt);
 
   return (
-    <span className="my-5 flex flex-col items-center">
-      <NextImage width={width * factor} height={height * factor} alt={alt ?? ""} src={src} />
-
-      {alt && <Caption>{alt}</Caption>}
+    <span className="flex flex-col items-center">
+      <NextImage
+        {...props}
+        className={cn(className, "overflow-hidden rounded-md")}
+        width={props.fill ? undefined : props.width ? (props.width as unknown as number) * factor : undefined}
+        height={props.fill ? undefined : props.height ? (props.height as unknown as number) * factor : undefined}
+        alt={alt ?? ""}
+        src={src}
+      />
     </span>
   );
 }

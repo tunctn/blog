@@ -13,6 +13,7 @@ import { H3 as h3 } from "@/components/mdx/h3";
 import { HR as hr } from "@/components/mdx/hr";
 import { Image } from "@/components/mdx/image";
 import { LI as li } from "@/components/mdx/li";
+import { Lightbox } from "@/components/mdx/lightbox";
 import { OL as ol } from "@/components/mdx/ol";
 import { P as p } from "@/components/mdx/p";
 import { Snippet } from "@/components/mdx/snippet";
@@ -34,7 +35,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     hr,
     code,
     pre: Snippet,
-    img: Image,
+    img: Lightbox,
     blockquote,
     Tweet,
     Image,

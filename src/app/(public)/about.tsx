@@ -1,11 +1,11 @@
-import { Section } from "@/components/section";
+import { Section } from "@/app/(public)/section";
 import { Paragraph } from "@/components/typography/paragraph";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 export const About = () => {
   return (
-    <Section title="About">
+    <Section>
       <Paragraph>
         I’m currently working as a software engineer at{" "}
         <Button asChild variant="link" className="py-0! text-base">

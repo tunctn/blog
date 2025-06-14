@@ -1,5 +1,6 @@
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
+import { Footer } from "@/app/(public)/footer";
+import { Header } from "@/app/(public)/header";
+import { Navigation } from "./navigation";
 
 export default function PublicLayout({
   children,
@@ -7,9 +8,12 @@ export default function PublicLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div>
-      <Header />
-      <main className="container mx-auto max-w-2xl px-4 pt-10">{children}</main>
+    <div className="container mx-auto max-w-2xl flex-col bg-card px-4">
+      <div className="flex min-h-screen flex-col pt-8">
+        <Header />
+        <Navigation />
+        <main className="grow">{children}</main>
+      </div>
       <Footer />
     </div>
   );

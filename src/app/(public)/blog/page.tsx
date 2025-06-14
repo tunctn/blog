@@ -10,7 +10,7 @@ type Experience = {
 const EXPERIENCE: Experience[] = [
   {
     title: "Software Engineer at nyra health",
-    description: "Personalized neuro-rehabilitation, with over 35000 (yes, you read that right) speech and cognitive exercises.",
+    description: "Personalized neuro-rehabilitation, with over 35000 speech and cognitive exercises.",
     href: "https://www.nyra.health",
   },
   {
@@ -34,9 +34,9 @@ const EXPERIENCE: Experience[] = [
   },
 ];
 
-export const Experience = () => {
+export default function ExperiencePage() {
   return (
-    <Section title="Experience">
+    <Section>
       <div className="md:-ml-4 flex flex-col gap-2 pt-4 md:w-[calc(100%+16px)]">
         {EXPERIENCE.map((experience) => (
           <ExperienceItem key={experience.title} {...experience} />
@@ -44,7 +44,7 @@ export const Experience = () => {
       </div>
     </Section>
   );
-};
+}
 
 const ExperienceItem = (props: Experience) => {
   const url = props.href ?? "#";

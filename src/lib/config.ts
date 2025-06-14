@@ -1,4 +1,4 @@
-export const config = {
+export const siteConfig = {
   twitter: "https://x.com/mikkeymoos",
   github: "https://github.com/tunctn",
   email: "tunc@tunctn.com",

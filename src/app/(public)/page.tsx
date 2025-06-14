@@ -1,9 +1,9 @@
 import { About } from "./about";
 import { Experience } from "./experience";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col gap-20 pb-10">
+    <div className="flex flex-col gap-20">
       <About />
       <Experience />
     </div>

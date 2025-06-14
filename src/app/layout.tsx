@@ -16,7 +16,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   // Just run this on app load. Ugly, but it works for my little personal site.
-  await kv.cleanupExpired();
+  if (!process.env.CI) {
+    await kv.cleanupExpired();
+  }
 
   return (
     <html lang="en" suppressHydrationWarning>

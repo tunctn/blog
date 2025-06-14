@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
+    "start": "pnpm db:migrate && next start",
     "lint": "pnpm biome lint",
-    "db:generate": "turbo run db:generate",
-    "db:migrate": "turbo run db:migrate"
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -17,6 +17,7 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.2.7",
     "@t3-oss/env-core": "^0.13.8",
+    "@tanstack/react-query": "^5.80.7",
     "@types/mdx": "^2.0.13",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -25,6 +26,7 @@
     "drizzle-orm": "^0.44.2",
     "image-size": "^2.0.2",
     "ioredis": "^5.6.1",
+    "ky": "^1.8.1",
     "lucide-react": "^0.515.0",
     "next": "15.3.3",
     "next-themes": "^0.4.6",
@@ -51,5 +53,6 @@
     "tsx": "^4.20.3",
     "tw-animate-css": "^1.3.4",
     "typescript": "^5.8.3"
-  }
+  },
+  "packageManager": "pnpm@9.13.2"
 }

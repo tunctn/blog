@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { count, db, eq, postViews } from "@/database";
 
 const postsDirectory = path.join(process.cwd(), "src/content/posts");
 
@@ -9,6 +10,7 @@ export type PostMeta = {
   description: string;
   tags?: string[];
   slug: string;
+  views: number;
 };
 
 export type Post = {
@@ -25,7 +27,7 @@ export type PostParams = {
   slug: string;
 };
 
-export function getPostSlugs(): string[] {
+export async function getPostSlugs(): Promise<string[]> {
   if (!fs.existsSync(postsDirectory)) {
     return [];
   }
@@ -38,10 +40,12 @@ export function getPostSlugs(): string[] {
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   try {
     const { meta, default: Component } = await import(`@/content/posts/${slug}.mdx`);
+    const [viewsResult] = await db.select({ count: count() }).from(postViews).where(eq(postViews.post_slug, slug));
 
     return {
       meta: {
         ...meta,
+        views: viewsResult.count ?? 0,
         slug,
       },
       Component,
@@ -52,8 +56,8 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
 }
 
 export async function getAllPosts(): Promise<Post[]> {
-  const slugs = getPostSlugs();
-  const postsPromises = slugs.map(getPostBySlug);
+  const slugs = await getPostSlugs();
+  const postsPromises = slugs.map(async (slug) => await getPostBySlug(slug));
   const posts = (await Promise.all(postsPromises))
     .filter((post): post is Post => post !== null)
     .sort((post1, post2) => new Date(post2.meta.date).getTime() - new Date(post1.meta.date).getTime());

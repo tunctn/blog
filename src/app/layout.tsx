@@ -3,6 +3,7 @@ import "./globals.css";
 import { kv } from "@/lib/key-value-store";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Tunç Türkmen",
@@ -24,7 +25,9 @@ export default async function RootLayout({
         <script defer src="https://analytics.wust.co/script.js" data-website-id="a1689b1b-de83-4539-9294-73121dc2b90f" />
       </head>
       <body className={cn("bg-background text-foreground antialiased")}>
-        <ThemeProvider attribute="class">{children}</ThemeProvider>
+        <Providers>
+          <ThemeProvider attribute="class">{children}</ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

@@ -1,80 +1,67 @@
 import { Section } from "@/app/(public)/section";
-import { cn } from "@/lib/utils";
+import { type Post, getAllPosts, getYearFromDate } from "@/lib/mdx";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
-type Experience = {
-  title: string;
-  description: string;
-  href?: string;
-};
-const EXPERIENCE: Experience[] = [
-  {
-    title: "Software Engineer at nyra health",
-    description: "Personalized neuro-rehabilitation, with over 35000 speech and cognitive exercises.",
-    href: "https://www.nyra.health",
-  },
-  {
-    title: "Frontend Developer at Diversifi.ai",
-    description: "Supercharge the work with 3rd Party Logistics (3PL) companies.",
-    href: "https://www.diversifi.ai",
-  },
-  {
-    title: "Full Stack Developer at x10D",
-    description: "AI-powered automated content creation platform for social media.",
-    href: "https://platform.cre8tera.ai",
-  },
-  {
-    title: "Full Stack Developer & UI Designer at Renegade Music",
-    description: "Comprehensive music management and analytics platform for artists and publishers.",
-  },
-  {
-    title: "Frontend Developer at Stella Stays",
-    description: "A modern hospitality platform with high-end properties.",
-    href: "https://www.stellastays.com",
-  },
-];
+export default function BlogPage() {
+  const posts = getAllPosts();
 
-export default function ExperiencePage() {
   return (
     <Section>
-      <div className="md:-ml-4 flex flex-col gap-2 pt-4 md:w-[calc(100%+16px)]">
-        {EXPERIENCE.map((experience) => (
-          <ExperienceItem key={experience.title} {...experience} />
-        ))}
+      <div className="flex flex-col gap-8">
+        <div>
+          <h1 className="mb-2 font-bold text-2xl">Blog</h1>
+          <p className="text-muted-foreground">Thoughts on web development, React experiments, and building things.</p>
+        </div>
+
+        {posts.length === 0 ? (
+          <div className="py-12 text-center">
+            <p className="text-muted-foreground">No posts yet. Come back soon!</p>
+          </div>
+        ) : (
+          <div className="md:-ml-4 flex flex-col gap-2 md:w-[calc(100%+16px)]">
+            {posts.map((post) => (
+              <BlogPostItem key={post.meta.slug} post={post} />
+            ))}
+          </div>
+        )}
       </div>
     </Section>
   );
 }
 
-const ExperienceItem = (props: Experience) => {
-  const url = props.href ?? "#";
-  const canOpen = url !== "#";
+const BlogPostItem = ({ post }: { post: Post }) => {
+  const year = getYearFromDate(post.meta.date);
 
-  const ExperienceItemContent = () => {
-    return (
-      <div
-        className={cn("group relative flex h-max flex-col items-start rounded-md py-2 transition-colors duration-200 md:px-4 ", {
-          "md:hover:bg-muted": canOpen,
-        })}
-      >
-        <span className="font-medium text-base">{props.title}</span>
-        <span className="text-muted-foreground text-sm">{props.description}</span>
-        {canOpen && (
+  return (
+    <Link href={`/blog/${year}/${post.meta.slug}`}>
+      <div className="group relative flex h-max flex-col items-start rounded-md py-3 transition-colors duration-200 md:px-4 md:hover:bg-muted">
+        <div className="mb-1 flex items-center gap-2">
+          <span className="font-medium text-base">{post.meta.title}</span>
           <span className="absolute top-3 right-3 opacity-0 transition-opacity group-hover:opacity-100">
             <ArrowUpRight className="size-4" />
           </span>
-        )}
+        </div>
+        <span className="mb-2 text-muted-foreground text-sm">{post.meta.description}</span>
+        <div className="flex items-center gap-3 text-muted-foreground text-xs">
+          <time dateTime={post.meta.date}>
+            {new Date(post.meta.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+          {post.meta.tags && post.meta.tags.length > 0 && (
+            <div className="flex gap-1">
+              {post.meta.tags.map((tag) => (
+                <span key={tag} className="rounded-md bg-muted px-2 py-1">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-    );
-  };
-
-  if (!canOpen) {
-    return <ExperienceItemContent />;
-  }
-
-  return (
-    <a href={url} target="_blank" rel="noopener noreferrer">
-      <ExperienceItemContent />
-    </a>
+    </Link>
   );
 };

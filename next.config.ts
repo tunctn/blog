@@ -3,10 +3,22 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  transpilePackages: ["next-mdx-remote"],
 };
 
 const withMDX = createMDX({
-  // Add markdown plugins here, as desired
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [
+      [
+        require("rehype-prism-plus"),
+        {
+          ignoreMissing: true,
+          showLineNumbers: true,
+        },
+      ],
+    ],
+  },
 });
 
 // Merge MDX config with Next.js config

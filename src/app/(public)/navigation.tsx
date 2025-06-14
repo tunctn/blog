@@ -14,7 +14,6 @@ const NAVIGATION: NavigationItem[] = [
     title: "About",
     href: "/",
   },
-
   {
     title: "Blog",
     href: "/blog",

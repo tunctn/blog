@@ -2,6 +2,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { siteConfig } from "@/lib/config";
+import Link from "next/link";
 
 export const Header = () => {
   return (
@@ -35,7 +36,9 @@ const Name = () => {
   return (
     <Tooltip>
       <TooltipTrigger>
-        <h1 className="font-bold text-lg">Tunç Türkmen</h1>
+        <Link href="/">
+          <h1 className="font-bold text-lg">Tunç Türkmen</h1>
+        </Link>
       </TooltipTrigger>
       <TooltipContent align="start">
         <p>Pronounced: Toonch Turk-men </p>

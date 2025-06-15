@@ -25,6 +25,7 @@ export type PostsByYear = {
 export type PostParams = {
   year: string;
   slug: string;
+  date: string;
 };
 
 export async function getPostSlugs(): Promise<string[]> {
@@ -89,5 +90,6 @@ export async function getAllPostParams(): Promise<PostParams[]> {
   return allPosts.map((post) => ({
     year: getYearFromDate(post.meta.date),
     slug: post.meta.slug,
+    date: post.meta.date,
   }));
 }

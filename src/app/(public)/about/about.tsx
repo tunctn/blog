@@ -2,6 +2,7 @@ import { Section } from "@/app/(public)/section";
 import { Paragraph } from "@/components/typography/paragraph";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { siteConfig } from "@/lib/config";
 
 export const About = () => {
   return (
@@ -31,8 +32,8 @@ export const About = () => {
       <Paragraph>
         Send an email to{" "}
         <Button asChild variant="link" className="my-0! h-0! py-0! text-base">
-          <a href="mailto:t@tunc.co" target="_blank" rel="noopener noreferrer">
-            <span>t@tunc.co</span>
+          <a href={`mailto:${siteConfig.email}`} target="_blank" rel="noopener noreferrer">
+            <span>{siteConfig.email}</span>
           </a>
         </Button>{" "}
         if you want to chat about anything. I'm always open to new opportunities and connections.

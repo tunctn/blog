@@ -1,5 +1,7 @@
 import { Section } from "@/app/(public)/section";
 import { getAllPostParams, getPostByYearAndSlug } from "@/lib/blog";
+import { env } from "@/lib/env";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Header } from "./header";
 
@@ -13,19 +15,20 @@ export async function generateStaticParams() {
   return await getAllPostParams();
 }
 
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { year, slug } = await params;
   const post = await getPostByYearAndSlug(year, slug);
 
   if (!post) {
-    return {
-      title: "Post Not Found",
-    };
+    return { title: "Post Not Found" };
   }
 
   return {
     title: post.meta.title,
     description: post.meta.description,
+    openGraph: {
+      images: [`${env.NEXT_PUBLIC_APP_URL}/blog/${year}/${slug}/opengraph-image`],
+    },
   };
 }
 

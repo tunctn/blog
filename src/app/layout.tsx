@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteConfig } from "@/lib/config";
 import { kv } from "@/lib/key-value-store";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "next-themes";
@@ -7,7 +8,22 @@ import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Tunç Türkmen",
-  description: "Software Engineer and Designer",
+  description:
+    "Tunç Türkmen is a software engineer, designer, and indie developer. He is the founder of Wust, a company that builds products for the web and people.",
+  openGraph: {
+    title: "Tunç Türkmen's blog",
+    description:
+      "Tunç Türkmen is a software engineer, designer, and indie developer. He is the founder of Wust, a company that builds products for the web and people.",
+    url: siteConfig.url,
+    siteName: "Tunç Türkmen's blog",
+    images: ["/opengraph-image"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteConfig.twitterHandle,
+    creator: siteConfig.twitterHandle,
+  },
+  metadataBase: new URL(siteConfig.url),
 };
 
 export default async function RootLayout({

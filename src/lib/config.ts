@@ -1,7 +1,11 @@
+import { env } from "./env";
+
 export const siteConfig = {
-  twitter: "https://x.com/mikkeymoos",
+  twitterHandle: "@tunctn_",
+  twitter: `https://x.com/tunctn_`,
   github: "https://github.com/tunctn",
-  email: "tunc@tunctn.com",
+  email: "t@tunc.co",
+  url: env.NEXT_PUBLIC_APP_URL,
 
   repoSource: "https://github.com/tunctn/tunc.co",
-};
+} as const;

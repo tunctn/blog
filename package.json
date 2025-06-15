@@ -8,9 +8,12 @@
     "start": "pnpm db:migrate && next start",
     "lint": "pnpm biome lint",
     "db:migrate": "drizzle-kit migrate",
-    "db:generate": "drizzle-kit generate"
+    "db:generate": "drizzle-kit generate",
+    "postinstall": "node ./fonts/init.mjs"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.6",
+    "@fontsource/roboto-mono": "^5.2.6",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15.3.3",

@@ -11,8 +11,10 @@ export const env = createEnv({
     DB_SSL: z.enum(["true", "false"]),
   },
 
-  // clientPrefix: "NEXT_PUBLIC_",
-  // client: {},
+  clientPrefix: "NEXT_PUBLIC_",
+  client: {
+    NEXT_PUBLIC_APP_URL: z.string(),
+  },
   runtimeEnv: process.env,
   emptyStringAsUndefined: true,
 });

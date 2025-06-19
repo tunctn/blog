@@ -71,7 +71,7 @@ export function getYearFromDate(date: string): string {
 }
 
 export function isNewPost(date: string): boolean {
-  return new Date(date).getTime() > new Date().getTime() - 1000 * 60 * 60 * 24 * 30; // 30 days
+  return new Date(date).getTime() > Date.now() - 1000 * 60 * 60 * 24 * 30; // 30 days
 }
 
 export async function getPostByYearAndSlug(year: string, slug: string): Promise<Post | null> {

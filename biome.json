@@ -38,28 +38,22 @@
       }
     }
   },
-  "organizeImports": {
-    "enabled": true
-  },
   "files": {
-    "ignore": [
-      "**/node_modules/**",
-      "**/dist/**",
-      "**/build/**",
-      "**/coverage/**",
-      "**/out/**",
-      "build",
-      "coverage",
-      "node_modules",
-      ".next",
-      "dist",
-      "out",
-      ".turbo",
-      "**/meta/*.json",
-      "**/logs/*",
-      "**/*.css",
-      "**/*.mdx"
-    ],
-    "include": ["**/*.ts", "**/*.json", "**/*.tsx", ".vscode/**", ".npmcheckrc", "site.webmanifest"]
+    "ignoreUnknown": true,
+    "includes": [
+      "!dist",
+      "!out",
+      "!.turbo",
+      "!.next",
+      "!node_modules",
+      "!coverage",
+
+      "**/*.ts",
+      "**/*.json",
+      "**/*.tsx",
+      ".vscode/**",
+      ".npmcheckrc",
+      "site.webmanifest"
+    ]
   }
 }

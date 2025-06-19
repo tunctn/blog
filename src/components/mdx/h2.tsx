@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
 import type { ComponentPropsWithRef } from "react";
+import { cn } from "@/lib/utils";
 import { withHeadingId } from "./utils";
 
 export function H2({ children, className, ...props }: ComponentPropsWithRef<"h2">) {

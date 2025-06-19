@@ -16,8 +16,6 @@ export function withHeadingId(children: React.ReactNode) {
               #
             </a>
 
-            {/* biome-ignore lint/a11y/useAnchorContent: <explanation> */}
-            <a href={`#${match[1]}`} id={match[1]} className="-top-[20px] absolute" />
             {el.substring(0, match.index)}
           </span>
         );

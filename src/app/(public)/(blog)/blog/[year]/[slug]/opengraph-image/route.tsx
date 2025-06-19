@@ -2,11 +2,11 @@ export const revalidate = 60;
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { getPostByYearAndSlug } from "@/lib/blog";
-import { env } from "@/lib/env";
 import commaNumber from "comma-number";
 import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
+import { getPostByYearAndSlug } from "@/lib/blog";
+import { env } from "@/lib/env";
 
 const fontsDir = join(process.cwd(), "src/fonts");
 
@@ -35,7 +35,9 @@ export async function GET(req: NextRequest) {
   return new ImageResponse(
     <div tw="flex p-10 h-full w-full bg-white flex-col" style={font("Inter 300")}>
       <header tw="flex w-full items-center justify-center mt-10">
-        <img src={`${env.NEXT_PUBLIC_APP_URL}/assets/logo.svg`} width={48} height={48} alt="Tunç Türkmen" />
+        <picture>
+          <img src={`${env.NEXT_PUBLIC_APP_URL}/assets/logo.svg`} width={48} height={48} alt="Tunç Türkmen" />
+        </picture>
       </header>
 
       <main tw="flex grow items-center justify-center flex-col w-full pt-5">

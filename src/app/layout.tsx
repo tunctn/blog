@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 import { siteConfig } from "@/lib/config";
 import { kv } from "@/lib/key-value-store";
 import { cn } from "@/lib/utils";
-import { ThemeProvider } from "next-themes";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     siteName: "Tunç Türkmen's blog",
     images: ["/opengraph-image"],
   },
+
   twitter: {
     card: "summary_large_image",
     site: siteConfig.twitterHandle,

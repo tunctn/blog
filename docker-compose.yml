@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:16-alpine # multi-arch, fine on Intel & Apple Silicon
+    restart: unless-stopped
+    # ↓ tell Docker Desktop to pull the correct architecture automatically.
+    #   Delete this line if you’re on Intel.
+    # platform: linux/arm64
+
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PORT: ${DB_PORT}
+
+    ports:
+      - "${DB_PORT}:5432" # host → container
+
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:

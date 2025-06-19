@@ -1,6 +1,6 @@
+import { ArrowUpRight } from "lucide-react";
 import { Section } from "@/app/(public)/section";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
 
 type Experience = {
   title: string;
@@ -50,31 +50,31 @@ const ExperienceItem = (props: Experience) => {
   const url = props.href ?? "#";
   const canOpen = url !== "#";
 
-  const ExperienceItemContent = () => {
-    return (
-      <div
-        className={cn("group relative flex h-max flex-col items-start rounded-md py-2 transition-colors duration-200 md:px-4 ", {
-          "md:hover:bg-muted": canOpen,
-        })}
-      >
-        <span className="font-medium text-base">{props.title}</span>
-        <span className="text-muted-foreground text-sm">{props.description}</span>
-        {canOpen && (
-          <span className="absolute top-3 right-3 opacity-0 transition-opacity group-hover:opacity-100">
-            <ArrowUpRight className="size-4" />
-          </span>
-        )}
-      </div>
-    );
-  };
-
   if (!canOpen) {
-    return <ExperienceItemContent />;
+    return <ExperienceItemContent canOpen={canOpen} title={props.title} description={props.description} />;
   }
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">
-      <ExperienceItemContent />
+      <ExperienceItemContent canOpen={canOpen} title={props.title} description={props.description} />
     </a>
+  );
+};
+
+const ExperienceItemContent = ({ canOpen, title, description }: { canOpen: boolean; title: string; description: string }) => {
+  return (
+    <div
+      className={cn("group relative flex h-max flex-col items-start rounded-md py-2 transition-colors duration-200 md:px-4 ", {
+        "md:hover:bg-muted": canOpen,
+      })}
+    >
+      <span className="font-medium text-base">{title}</span>
+      <span className="text-muted-foreground text-sm">{description}</span>
+      {canOpen && (
+        <span className="absolute top-3 right-3 opacity-0 transition-opacity group-hover:opacity-100">
+          <ArrowUpRight className="size-4" />
+        </span>
+      )}
+    </div>
   );
 };

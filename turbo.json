@@ -1,0 +1,9 @@
+{
+    "$schema": "https://turborepo.org/schema.json",
+    "pipeline": {
+      "db:up": { "cache": false },
+      "dev": {
+        "dependsOn": ["^dev", "db:up"]
+      }
+    }
+  }

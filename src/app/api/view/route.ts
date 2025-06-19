@@ -1,9 +1,9 @@
+import commaNumber from "comma-number";
+import type { NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { count, db, eq, postViews } from "@/database";
 import { getAllPosts } from "@/lib/blog";
 import { getRefererOrigin } from "@/utils/get-referer-origin";
-import commaNumber from "comma-number";
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 
 const getPost = async (req: NextRequest) => {
   const url = new URL(req.url);
@@ -37,6 +37,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  //
   const referer = req.headers.get("referer");
   const country = req.headers.get("cf-ipcountry") ?? "unknown";
 

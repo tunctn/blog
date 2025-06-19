@@ -20,6 +20,20 @@ A personal website and blog built with Next.js, showcasing my work, thoughts, an
 - pnpm (recommended package manager)
 
 
+## Cursor Plugins (Recommended)
+- [Biome](https://open-vsx.org/extension/biomejs/biome)
+- [I18N Ally](https://open-vsx.org/extension/lokalise/i18n-ally)
+- [MDX](https://open-vsx.org/extension/unifiedjs/vscode-mdx)
+- [Prettier](https://open-vsx.org/extension/esbenp/prettier-vscode)
+- [Tailwind CSS IntelliSense](https://open-vsx.org/extension/bradlc/vscode-tailwindcss)
+
+## Cursor Plugins (Optional)
+- [Docker](https://open-vsx.org/extension/ms-azuretools/vscode-docker)
+- [GitHub Theme](https://open-vsx.org/extension/GitHub/github-vscode-theme)
+- [GitLens](https://open-vsx.org/extension/eamodio/gitlens)
+- [Peacock](https://open-vsx.org/extension/johnpapa/vscode-peacock)
+
+
 ### Installation
 
 1. Clone the repository:
